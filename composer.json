@@ -1,0 +1,54 @@
+{
+    "name": "onurkacmaz/laravel-n11",
+    "description": "n11 package",
+    "keywords": [
+        "onurkacmaz",
+        "laravel-n11"
+    ],
+    "homepage": "https://github.com/onurkacmaz/laravel-n11",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Onur Kaçmaz",
+            "email": "kacmaz.onur@hotmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Onurkacmaz\\LaravelN11\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Onurkacmaz\\LaravelN11\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Onurkacmaz\\LaravelN11\\LaravelN11ServiceProvider"
+            ],
+            "aliases": {
+                "LaravelN11": "Onurkacmaz\\LaravelN11\\LaravelN11Facade"
+            }
+        }
+    }
+}
