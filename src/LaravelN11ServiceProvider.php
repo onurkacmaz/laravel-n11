@@ -54,7 +54,7 @@ class LaravelN11ServiceProvider extends ServiceProvider
 
         // Register the main class to use with the facade
         $this->app->singleton('laravel-n11', function () {
-            return new LaravelN11;
+            return new Service;
         });
     }
 }
