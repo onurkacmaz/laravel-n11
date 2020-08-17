@@ -2,7 +2,9 @@
 
 namespace Onurkacmaz\LaravelN11\Models;
 
-use OnurKacmaz\LaravelN11\Service;
+
+use Illuminate\Support\Collection;
+use Onurkacmaz\LaravelN11\Service;
 
 class Category extends Service
 {
@@ -10,12 +12,12 @@ class Category extends Service
     /**s
      * @var \SoapClient|null
      */
-    private static $_client = null;
+    private $_client = null;
 
     /**
      * @var string
      */
-    private static $endPoint = "/CategoryService.wsdl";
+    private $endPoint = "/CategoryService.wsdl";
 
     /**
      * Category constructor
@@ -25,16 +27,16 @@ class Category extends Service
     public function __construct()
     {
         parent::__construct();
-        self::$_client = $this->setEndPoint(self::$endPoint);
+        $this->_client = self::setEndPoint($this->endPoint);
     }
 
     /**
      * @return mixed
      * @description Üst Seviye Kategorileri Listeler
      */
-    public static function getTopLevelCategories()
+    public function topLevelCategories()
     {
-        return self::$_client->GetTopLevelCategories(self::$_parameters);
+        return $this->_client->GetTopLevelCategories($this->_parameters);
     }
 
 }

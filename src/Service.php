@@ -1,8 +1,8 @@
 <?php
 
-namespace OnurKacmaz\LaravelN11;
+namespace Onurkacmaz\LaravelN11;
 
-use OnurKacmaz\LaravelN11\Exceptions\N11Exception;
+use Onurkacmaz\LaravelN11\Exceptions\N11Exception;
 use SoapClient;
 
 class Service
@@ -11,24 +11,24 @@ class Service
     /**
      * @var array[]|null
      */
-    protected static $_parameters = null;
+    protected $_parameters = null;
 
     /**
      * @var string
      */
-    protected static $_baseUrl = "https://api.n11.com/ws";
+    protected $_baseUrl = "https://api.n11.com/ws";
 
     /**
      * Service constructor.
      */
     public function __construct()
     {
-        if (is_null($_ENV["API_KEY"]) && is_null($_ENV["API_SECRET"])) {
+        if (is_null(env("N11_API_KEY")) && is_null(env("N11_API_SECRET"))) {
             {
                 throw new N11Exception("API KEY and API SECRET cannot be null");
             }
         }
-        self::$_parameters = ['auth' => ['appKey' => $_ENV["API_KEY"], 'appSecret' => $_ENV["API_SECRET"]]];
+        $this->_parameters = ['auth' => ['appKey' => env("N11_API_KEY"), 'appSecret' => env("N11_API_SECRET")]];
     }
 
     /**
@@ -37,7 +37,7 @@ class Service
      */
     protected function setEndPoint(string $endPoint): SoapClient
     {
-        return new SoapClient(self::$_baseUrl . $endPoint);
+        return new SoapClient($this->_baseUrl . $endPoint);
     }
 
 }
