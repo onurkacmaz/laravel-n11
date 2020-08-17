@@ -5,6 +5,7 @@
         "onurkacmaz",
         "laravel-n11"
     ],
+    "version": "1.0.0",
     "homepage": "https://github.com/onurkacmaz/laravel-n11",
     "license": "MIT",
     "type": "library",
