@@ -23,12 +23,12 @@ class Service
      */
     public function __construct()
     {
-        if (is_null(env("N11_API_KEY")) && is_null(env("N11_API_SECRET"))) {
+        if (is_null(config("laravel-n11.api_key")) && is_null(config("laravel-n11.api_secret"))) {
             {
                 throw new N11Exception("API KEY and API SECRET cannot be null");
             }
         }
-        $this->_parameters = ['auth' => ['appKey' => env("N11_API_KEY"), 'appSecret' => env("N11_API_SECRET")]];
+        $this->_parameters = ['auth' => ['appKey' => config("laravel-n11.api_key"), 'appSecret' => config("laravel-n11.api_secret")]];
     }
 
     /**
