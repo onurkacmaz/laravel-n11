@@ -27,8 +27,6 @@ class LaravelN11ServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-n11');
 
         // Register the main class to use with the facade
         $this->app->singleton(LaravelN11ServiceProvider::class, function (Application $app) {
