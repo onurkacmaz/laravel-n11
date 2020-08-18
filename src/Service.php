@@ -34,6 +34,7 @@ class Service
     /**
      * @param string $endPoint
      * @return SoapClient
+     * @throws \SoapFault
      */
     protected function setEndPoint(string $endPoint): SoapClient
     {

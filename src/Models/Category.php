@@ -4,13 +4,15 @@ namespace Onurkacmaz\LaravelN11\Models;
 
 
 use Illuminate\Support\Collection;
+use Onurkacmaz\LaravelN11\Exceptions\N11Exception;
 use Onurkacmaz\LaravelN11\Service;
+use SoapClient;
 
 class Category extends Service
 {
 
-    /**s
-     * @var \SoapClient|null
+    /**
+     * @var SoapClient|null
      */
     private $_client = null;
 
@@ -22,12 +24,12 @@ class Category extends Service
     /**
      * Category constructor
      * endPoint set edildi.
-     * @throws \SoapFault
+     * @throws N11Exception|\SoapFault
      */
     public function __construct()
     {
         parent::__construct();
-        $this->_client = self::setEndPoint($this->endPoint);
+        $this->_client = $this->setEndPoint($this->endPoint);
     }
 
     /**
