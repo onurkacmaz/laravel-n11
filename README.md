@@ -1,11 +1,8 @@
-# Very short description of the package
-
+# Laravel N11 Integration Package
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/onurkacmaz/laravel-n11.svg?style=flat-square)](https://packagist.org/packages/onurkacmaz/laravel-n11)
 [![Build Status](https://img.shields.io/travis/onurkacmaz/laravel-n11/master.svg?style=flat-square)](https://travis-ci.org/onurkacmaz/laravel-n11)
 [![Quality Score](https://img.shields.io/scrutinizer/g/onurkacmaz/laravel-n11.svg?style=flat-square)](https://scrutinizer-ci.com/g/onurkacmaz/laravel-n11)
 [![Total Downloads](https://img.shields.io/packagist/dt/onurkacmaz/laravel-n11.svg?style=flat-square)](https://packagist.org/packages/onurkacmaz/laravel-n11)
-
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
 
 ## Installation
 
@@ -18,7 +15,8 @@ composer require onurkacmaz/laravel-n11
 ## Usage
 
 ``` php
-// Usage description here
+$category = new Category();
+dd($category->getTopLevelCategories());
 ```
 
 ### Testing
