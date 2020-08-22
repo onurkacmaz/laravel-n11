@@ -12,7 +12,7 @@ class Category extends Service
     /**
      * @var SoapClient|null
      */
-    private $_client = null;
+    private $_client;
 
     /**
      * @var string
