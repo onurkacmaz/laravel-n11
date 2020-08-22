@@ -33,7 +33,7 @@ class SapCommissionEInvoiceDetail extends Service
     /**
      * @param string $date
      * @return mixed
-     * @description Hesap ekstresi için günlük sorgulama limiti sayısı 3 olarak set edilmiştir.
+     * @description Fatura detayı için günlük sorgulama limiti sayısı 3 olarak set edilmiştir.
      */
     public function getSapCommissionEInvoiceDetail(string $date) {
         $this->_parameters["date"] = $date;
