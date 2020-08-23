@@ -26,7 +26,7 @@ class Service
     {
         if (is_null(config("laravel-n11.api_key")) || is_null(config("laravel-n11.api_secret"))) {
             {
-                throw new N11Exception("API KEY and API SECRET cannot be null");
+                throw new N11Exception("API KEY or API SECRET cannot be null");
             }
         }
         $this->_parameters = ['auth' => ['appKey' => config("laravel-n11.api_key"), 'appSecret' => config("laravel-n11.api_secret")]];
