@@ -20,10 +20,11 @@ class Service
 
     /**
      * Service constructor.
+     * @throws N11Exception
      */
     public function __construct()
     {
-        if (is_null(config("laravel-n11.api_key")) && is_null(config("laravel-n11.api_secret"))) {
+        if (is_null(config("laravel-n11.api_key")) || is_null(config("laravel-n11.api_secret"))) {
             {
                 throw new N11Exception("API KEY and API SECRET cannot be null");
             }
