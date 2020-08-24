@@ -11,15 +11,9 @@ class LaravelN11ServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('laravel-n11.php'),
-            ], 'config');
-
-            // Registering package commands.
-            // $this->commands([]);
-        }
+        $this->publishes([
+            __DIR__.'/../config/laravel-n11.php' => config_path('laravel-n11.php'),
+        ], 'config');
     }
 
     /**
@@ -27,10 +21,11 @@ class LaravelN11ServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
-        // Register the main class to use with the facade
         $this->app->singleton(LaravelN11ServiceProvider::class, function (Application $app) {
             return new LaravelN11ServiceProvider();
         });
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/laravel-n11.php', 'laravel-n11'
+        );
     }
 }
