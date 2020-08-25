@@ -16,7 +16,7 @@ class Service
     /**
      * @var string
      */
-    protected $_baseUrl = "https://api.n11.com/ws";
+    private $_baseUrl = "https://api.n11.com/ws";
 
     /**
      * Service constructor.
