@@ -3,10 +3,11 @@
 namespace Onurkacmaz\LaravelN11\Models;
 
 use Onurkacmaz\LaravelN11\Exceptions\N11Exception;
+use Onurkacmaz\LaravelN11\Interfaces\ProductSellingInterface;
 use Onurkacmaz\LaravelN11\Service;
 use SoapClient;
 
-class ProductSelling extends Service
+class ProductSelling extends Service implements ProductSellingInterface
 {
 
     /**

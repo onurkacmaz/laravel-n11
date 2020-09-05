@@ -4,10 +4,11 @@
 namespace Onurkacmaz\LaravelN11\Models;
 
 use Onurkacmaz\LaravelN11\Exceptions\N11Exception;
+use Onurkacmaz\LaravelN11\Interfaces\ShipmentTemplateInterface;
 use Onurkacmaz\LaravelN11\Service;
 use SoapClient;
 
-class ShipmentTemplate extends Service
+class ShipmentTemplate extends Service implements ShipmentTemplateInterface
 {
 
     /**

@@ -1,45 +1,16 @@
 <?php
 
-namespace Onurkacmaz\LaravelN11\Models;
+namespace Onurkacmaz\LaravelN11\Interfaces;
 
-use Onurkacmaz\LaravelN11\Exceptions\N11Exception;
-use Onurkacmaz\LaravelN11\Interfaces\CityInterface;
-use Onurkacmaz\LaravelN11\Service;
-use SoapClient;
-
-class City extends Service implements CityInterface
+interface CityInterface
 {
-
-    /**
-     * @var SoapClient|null
-     */
-    private $_client;
-
-    /**
-     * @var string
-     */
-    private $endPoint = "/CityService.wsdl";
-
-    /**
-     * City constructor
-     * @throws N11Exception|\SoapFault
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->_client = $this->setEndPoint($this->endPoint);
-    }
-
     /**
      * @return mixed
      * @description Sistemde kayıtlı şehirlerin kodları ve plaka numaraları ile birlikte listelenmesi için bu metot kullanılır.
      * Adres ile ilgili işlem yapmak istendiği zaman bu servis aracılığı ile elde edilen şehir kodları kullanılır.
      * Genel kullanıma açık bir servis olduğu için servisin kullanımı sırasında herhangi bir güvenlik kontrolü yapılmamaktadır.
      */
-    public function getCities()
-    {
-        return $this->_client->GetCities();
-    }
+    public function getCities();
 
     /**
      * @param int $cityCode
@@ -49,10 +20,7 @@ class City extends Service implements CityInterface
      * Genel kullanıma açık bir servis olduğu için servisin kullanımı sırasında herhangi bir güvenlik kontrolü yapılmamaktadır.
      * Sorgulanan şehir sistemde bulunamazsa ‘şehir bulunamadı’ hatası alınır.
      */
-    public function getCity(int $cityCode)
-    {
-        return $this->_client->GetCity(["cityCode" => $cityCode]);
-    }
+    public function getCity(int $cityCode);
 
     /**
      * @param int $cityCode
@@ -62,10 +30,7 @@ class City extends Service implements CityInterface
      * Genel kullanıma açık bir servis olduğu için servisin kullanımı sırasında herhangi bir güvenlik kontrolü yapılmamaktadır.
      * Sorgulanan şehir sistemde bulunamazsa ‘şehir bulunamadı’ hatası alınır.
      */
-    public function getDistricts(int $cityCode)
-    {
-        return $this->_client->GetDistrict(["cityCode" => $cityCode]);
-    }
+    public function getDistricts(int $cityCode);
 
     /**
      * @param int $districtId
@@ -74,9 +39,5 @@ class City extends Service implements CityInterface
      * Genel kullanıma açık bir servis olduğu için servisin kullanımı sırasında herhangi bir güvenlik kontrolü yapılmamaktadır.
      * Sorgulanan ilçe sistemde bulunamazsa ‘ilçe bulunamadı’ hatası alınır.
      */
-    public function getNeighborhoods(int $districtId)
-    {
-        return $this->_client->GetNeighborhoods(["districtId" => $districtId]);
-    }
-
+    public function getNeighborhoods(int $districtId);
 }

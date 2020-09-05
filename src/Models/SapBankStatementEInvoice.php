@@ -4,10 +4,11 @@
 namespace Onurkacmaz\LaravelN11\Models;
 
 use Onurkacmaz\LaravelN11\Exceptions\N11Exception;
+use Onurkacmaz\LaravelN11\Interfaces\SapBankStatementEInvoiceInterface;
 use Onurkacmaz\LaravelN11\Service;
 use SoapClient;
 
-class SapBankStatementEInvoice extends Service
+class SapBankStatementEInvoice extends Service implements SapBankStatementEInvoiceInterface
 {
 
     /**

@@ -4,10 +4,11 @@
 namespace Onurkacmaz\LaravelN11\Models;
 
 use Onurkacmaz\LaravelN11\Exceptions\N11Exception;
+use Onurkacmaz\LaravelN11\Interfaces\SapCommissionEInvoiceDetailInterface;
 use Onurkacmaz\LaravelN11\Service;
 use SoapClient;
 
-class SapCommissionEInvoiceDetail extends Service
+class SapCommissionEInvoiceDetail extends Service implements SapCommissionEInvoiceDetailInterface
 {
 
     /**
