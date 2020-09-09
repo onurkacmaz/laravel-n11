@@ -38,7 +38,7 @@ class ProductStock extends Service implements ProductStockInterface
      * Cevap içinde stok durumunun “version” bilgisi de vardır, ürün stoklarında değişme olduysa bu versiyon bilgisi artacaktır,
      * Çağrı yapan taraf versiyon bilgisini kontrol ederek N11 e verilen stok bilgilerinde değişim olup olmadığını anlayabilir.
      */
-    public function getProductStockByProductId(int $productId)
+    public function getProductStockByProductId(int $productId): object
     {
         $this->_parameters["product"]["id"] = $productId;
         return $this->_client->GetProductStockByProductId($this->_parameters);
@@ -51,7 +51,7 @@ class ProductStock extends Service implements ProductStockInterface
      * Cevap içinde stok durumunun “version” bilgisi de vardır, ürün stoklarında değişme olduysa bu versiyon bilgisi artacaktır,
      * Çağrı yapan taraf versiyon bilgisini kontrol ederek N11 e verilen stok bilgilerinde değişim olup olmadığını anlayabilir.
      */
-    public function getProductStockBySellerCode(string $productSellerCode)
+    public function getProductStockBySellerCode(string $productSellerCode): object
     {
         $this->_parameters["productSellerCode"] = $productSellerCode;
         return $this->_client->GetProductStockBySellerCode($this->_parameters);
@@ -70,7 +70,8 @@ class ProductStock extends Service implements ProductStockInterface
      * Bir ürün için tüm stok bilgilerini güncelleme işlemi gerçekleştirilebilir.
      * N11 tarafında değişen stok miktarlarını ezmemek için, “version” bilgisi verilmesi durumunda ilgili ürün stok bilgisinin N11 de versiyonu ile karşılaştırma yapılır, stok versiyon numaraları uyumsuz ise işlem gerçekleştirilmez.
      */
-    public function updateStockByStockAttributes(int $productId, string $attrName, string $attrValue, int $quantity, int $version = 0) {
+    public function updateStockByStockAttributes(int $productId, string $attrName, string $attrValue, int $quantity, int $version = 0): object
+    {
         $this->_parameters["product"] = [
             "Id" => $productId,
             "stockItems" => [
@@ -99,7 +100,8 @@ class ProductStock extends Service implements ProductStockInterface
      * Bir ürüne ait n11 ürün stok ID sine, ProductStockService içindeki GetProductStockByProductId veya GetProductStockBySellerCode metotları ile ulaşılabilir.
      * N11 tarafında değişen stok miktarlarını ezmemek için, “version” bilgisi verilmesi durumunda ilgili ürün stok bilgisinin N11 de versiyonu ile karşılaştırma yapılır, stok versiyon numaraları uyumsuz ise işlem gerçekleştirilmez.
      */
-    public function updateStockByStockId(int $stockItemId, int $quantity, int $version = 0) {
+    public function updateStockByStockId(int $stockItemId, int $quantity, int $version = 0): object
+    {
         $this->_parameters["stockItems"] = [
             "stockItem" => [
                 "id" => $stockItemId,
@@ -119,7 +121,8 @@ class ProductStock extends Service implements ProductStockInterface
      * Mağaza ürün stok kodu ve miktar bilgileri girilerek güncelleme işlemi yapılır.
      * N11 tarafında değişen stok miktarlarını ezmemek için, “version” bilgisi verilmesi durumunda ilgili ürün stok bilgisinin N11 de versiyonu ile karşılaştırma yapılır, stok versiyon numaraları uyumsuz ise işlem gerçekleştirilmez.
      */
-    public function updateStockByStockSellerCode(string $stockSellerCode, int $quantity, int $version = 0) {
+    public function updateStockByStockSellerCode(string $stockSellerCode, int $quantity, int $version = 0): object
+    {
         $this->_parameters["stockItems"] = [
             "stockItem" => [
                 "sellerStockCode" => $stockSellerCode,
@@ -139,7 +142,8 @@ class ProductStock extends Service implements ProductStockInterface
      * @description Bir ürünün stok seçenek bilgilerini kullanarak stok miktarını arttırmak için kullanılır.
      * N11 tarafında değişen stok miktarlarını ezmemek için, “version” bilgisi verilmesi durumunda ilgili ürün stok bilgisinin N11 de versiyonu ile karşılaştırma yapılır, stok versiyon numaraları uyumsuz ise işlem gerçekleştirilmez.
      */
-    public function increaseStockByStockAttributes(string $attrName, string $attrValue, int $quantityToIncrease, int $version = 0) {
+    public function increaseStockByStockAttributes(string $attrName, string $attrValue, int $quantityToIncrease, int $version = 0): object
+    {
         $this->_parameters["product"] = [
             "stockItems" => [
                 "stockItem" => [
@@ -165,7 +169,8 @@ class ProductStock extends Service implements ProductStockInterface
      * Bir ürüne ait n11 ürün stok ID sine, ProductStockService içindeki GetProductStockByProductId veya GetProductStockBySellerCode metotları ile ulaşılabilir.
      * N11 tarafında değişen stok miktarlarını ezmemek için, “version” bilgisi verilmesi durumunda ilgili ürün stok bilgisinin N11 de versiyonu ile karşılaştırma yapılır, stok versiyon numaraları uyumsuz ise işlem gerçekleştirilmez.
      */
-    public function increaseStockByStockId(int $stockItemId, int $quantityToIncrease) {
+    public function increaseStockByStockId(int $stockItemId, int $quantityToIncrease): object
+    {
         $this->_parameters["stockItems"] = [
             "stockItem" => [
                 "id" => $stockItemId,
@@ -182,7 +187,8 @@ class ProductStock extends Service implements ProductStockInterface
      * @description Bir ürünün mağaza stok kodu kullanarak stok miktarını arttırmak için kullanılır.
      * N11 tarafında değişen stok miktarlarını ezmemek için, “version” bilgisi verilmesi durumunda ilgili ürün stok bilgisinin N11 de versiyonu ile karşılaştırma yapılır, stok versiyon numaraları uyumsuz ise işlem gerçekleştirilmez.
      */
-    public function increaseStockByStockSellerCode(string $sellerStockCode, int $quantityToIncrease) {
+    public function increaseStockByStockSellerCode(string $sellerStockCode, int $quantityToIncrease): object
+    {
         $this->_parameters["stockItems"] = [
             "stockItem" => [
                 "sellerStockCode" => $sellerStockCode,

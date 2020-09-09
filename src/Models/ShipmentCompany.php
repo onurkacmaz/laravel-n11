@@ -36,7 +36,7 @@ class ShipmentCompany extends Service implements ShipmentCompanyInterface
      * @description Sistemde tanımlı olan tüm kargo şirketlerini listeler.
      * Genel kullanıma açık bir servis olduğu için servisin kullanımı sırasında herhangi bir güvenlik kontrolü yapılmamaktadır.
      */
-    public function getShipmentCompanies() {
+    public function getShipmentCompanies(): object {
         return $this->_client->GetShipmentCompanies();
     }
 

@@ -11,7 +11,7 @@ interface ProductStockInterface
      * Cevap içinde stok durumunun “version” bilgisi de vardır, ürün stoklarında değişme olduysa bu versiyon bilgisi artacaktır,
      * Çağrı yapan taraf versiyon bilgisini kontrol ederek N11 e verilen stok bilgilerinde değişim olup olmadığını anlayabilir.
      */
-    public function getProductStockByProductId(int $productId);
+    public function getProductStockByProductId(int $productId): object;
 
     /**
      * @param string $productSellerCode
@@ -20,7 +20,7 @@ interface ProductStockInterface
      * Cevap içinde stok durumunun “version” bilgisi de vardır, ürün stoklarında değişme olduysa bu versiyon bilgisi artacaktır,
      * Çağrı yapan taraf versiyon bilgisini kontrol ederek N11 e verilen stok bilgilerinde değişim olup olmadığını anlayabilir.
      */
-    public function getProductStockBySellerCode(string $productSellerCode);
+    public function getProductStockBySellerCode(string $productSellerCode): object;
 
     /**
      * @param int $productId
@@ -35,7 +35,7 @@ interface ProductStockInterface
      * Bir ürün için tüm stok bilgilerini güncelleme işlemi gerçekleştirilebilir.
      * N11 tarafında değişen stok miktarlarını ezmemek için, “version” bilgisi verilmesi durumunda ilgili ürün stok bilgisinin N11 de versiyonu ile karşılaştırma yapılır, stok versiyon numaraları uyumsuz ise işlem gerçekleştirilmez.
      */
-    public function updateStockByStockAttributes(int $productId, string $attrName, string $attrValue, int $quantity, int $version = 0);
+    public function updateStockByStockAttributes(int $productId, string $attrName, string $attrValue, int $quantity, int $version = 0): object;
 
     /**
      * @param int $stockItemId
@@ -47,7 +47,7 @@ interface ProductStockInterface
      * Bir ürüne ait n11 ürün stok ID sine, ProductStockService içindeki GetProductStockByProductId veya GetProductStockBySellerCode metotları ile ulaşılabilir.
      * N11 tarafında değişen stok miktarlarını ezmemek için, “version” bilgisi verilmesi durumunda ilgili ürün stok bilgisinin N11 de versiyonu ile karşılaştırma yapılır, stok versiyon numaraları uyumsuz ise işlem gerçekleştirilmez.
      */
-    public function updateStockByStockId(int $stockItemId, int $quantity, int $version = 0);
+    public function updateStockByStockId(int $stockItemId, int $quantity, int $version = 0): object;
 
     /**
      * @param string $stockSellerCode
@@ -58,7 +58,7 @@ interface ProductStockInterface
      * Mağaza ürün stok kodu ve miktar bilgileri girilerek güncelleme işlemi yapılır.
      * N11 tarafında değişen stok miktarlarını ezmemek için, “version” bilgisi verilmesi durumunda ilgili ürün stok bilgisinin N11 de versiyonu ile karşılaştırma yapılır, stok versiyon numaraları uyumsuz ise işlem gerçekleştirilmez.
      */
-    public function updateStockByStockSellerCode(string $stockSellerCode, int $quantity, int $version = 0);
+    public function updateStockByStockSellerCode(string $stockSellerCode, int $quantity, int $version = 0): object;
 
     /**
      * @param string $attrName
@@ -69,7 +69,7 @@ interface ProductStockInterface
      * @description Bir ürünün stok seçenek bilgilerini kullanarak stok miktarını arttırmak için kullanılır.
      * N11 tarafında değişen stok miktarlarını ezmemek için, “version” bilgisi verilmesi durumunda ilgili ürün stok bilgisinin N11 de versiyonu ile karşılaştırma yapılır, stok versiyon numaraları uyumsuz ise işlem gerçekleştirilmez.
      */
-    public function increaseStockByStockAttributes(string $attrName, string $attrValue, int $quantityToIncrease, int $version = 0);
+    public function increaseStockByStockAttributes(string $attrName, string $attrValue, int $quantityToIncrease, int $version = 0): object;
 
     /**
      * @param int $stockItemId
@@ -79,7 +79,7 @@ interface ProductStockInterface
      * Bir ürüne ait n11 ürün stok ID sine, ProductStockService içindeki GetProductStockByProductId veya GetProductStockBySellerCode metotları ile ulaşılabilir.
      * N11 tarafında değişen stok miktarlarını ezmemek için, “version” bilgisi verilmesi durumunda ilgili ürün stok bilgisinin N11 de versiyonu ile karşılaştırma yapılır, stok versiyon numaraları uyumsuz ise işlem gerçekleştirilmez.
      */
-    public function increaseStockByStockId(int $stockItemId, int $quantityToIncrease);
+    public function increaseStockByStockId(int $stockItemId, int $quantityToIncrease): object;
 
     /**
      * @param string $sellerStockCode
@@ -88,5 +88,5 @@ interface ProductStockInterface
      * @description Bir ürünün mağaza stok kodu kullanarak stok miktarını arttırmak için kullanılır.
      * N11 tarafında değişen stok miktarlarını ezmemek için, “version” bilgisi verilmesi durumunda ilgili ürün stok bilgisinin N11 de versiyonu ile karşılaştırma yapılır, stok versiyon numaraları uyumsuz ise işlem gerçekleştirilmez.
      */
-    public function increaseStockByStockSellerCode(string $sellerStockCode, int $quantityToIncrease);
+    public function increaseStockByStockSellerCode(string $sellerStockCode, int $quantityToIncrease): object;
 }

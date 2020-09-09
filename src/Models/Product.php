@@ -241,4 +241,33 @@ class Product extends Service implements ProductInterface
         return $this->_client->UpdateProductPriceBySellerCode($this->_parameters);
     }
 
+    /**
+     * @param array $data
+     * @return object
+     * @description Kayıtlı olan bir ürünün, N11 ürün ID’si ya da mağaza kodu ile ürün fiyatını, ürün üzerindeki indirimi ve isteğe bağlı olarak stok ID’si ya da mağaza stok kodu ile belirtilen stoklarının, miktarı ve ilgili stok biriminin liste fiyatının güncellenmesi için kullanılır.
+     */
+    public function updateProductBasic(array $data): object
+    {
+        $this->_parameters["productId"] = $data["productId"];
+        $this->_parameters["productSellerCode"] = $data["productSellerCode"];
+        $this->_parameters["price"] = $data["price"];
+        $this->_parameters["description"] = $data["description"];
+        $this->_parameters["images"] = [
+            "image" => $data["images"]
+        ];
+        $this->_parameters["productDiscount"] = [
+            "discountType" => $data["discountType"],
+            "discountValue" => $data["discountValue"],
+            "discountStartDate" => $data["startDate"],
+            "discountEndDate" => $data["discountEndDate"],
+            "discountStockCode" => $data["discountStockCode"],
+            "optionPrice" => $data["optionPrice"],
+            "quantity" => $data["quantity"],
+        ];
+        $this->_parameters["stockItems"] = [
+            "stockItem" => $data["stockItems"]
+        ];
+        return $this->_client->UpdateProductBasic($this->_parameters);
+    }
+
 }

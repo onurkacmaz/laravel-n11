@@ -36,7 +36,7 @@ class ProductSelling extends Service implements ProductSellingInterface
      * @return mixed
      * @description Satışta olmayan bir ürünün N11 ürün ID si kullanılarak satışa başlanması için kullanılır.
      */
-    public function startSellingProductByProductId(int $productId)
+    public function startSellingProductByProductId(int $productId): object
     {
         $this->_parameters["productId"] = $productId;
         return $this->_client->StartSellingProductByProductId($this->_parameters);
@@ -47,7 +47,7 @@ class ProductSelling extends Service implements ProductSellingInterface
      * @return mixed
      * @description Satışta olmayan bir ürünün mağaza ürün kodu kullanılarak satışa başlanması için kullanılır.
      */
-    public function startSellingProductBySellerCode(string $productSellerCode)
+    public function startSellingProductBySellerCode(string $productSellerCode): object
     {
         $this->_parameters["productSellerCode"] = $productSellerCode;
         return $this->_client->StartSellingProductBySellerCode($this->_parameters);
@@ -58,7 +58,7 @@ class ProductSelling extends Service implements ProductSellingInterface
      * @return mixed
      * @description Satışta olan ürünün n11 ürün ID si kullanılarak satışa kapatılması için kullanılır.
      */
-    public function stopSellingProductByProductId(int $productId)
+    public function stopSellingProductByProductId(int $productId): object
     {
         $this->_parameters["productId"] = $productId;
         return $this->_client->StopSellingProductByProductId($this->_parameters);
@@ -69,7 +69,7 @@ class ProductSelling extends Service implements ProductSellingInterface
      * @return mixed
      * @description Satışta olan ürünün mağaza ürün kodu kullanılarak satışının durdurulması için kullanılır.
      */
-    public function stopSellingProductBySellerCode(string $productSellerCode)
+    public function stopSellingProductBySellerCode(string $productSellerCode): object
     {
         $this->_parameters["productSellerCode"] = $productSellerCode;
         return $this->_client->StopSellingProductBySellerCode($this->_parameters);

@@ -36,7 +36,7 @@ class City extends Service implements CityInterface
      * Adres ile ilgili işlem yapmak istendiği zaman bu servis aracılığı ile elde edilen şehir kodları kullanılır.
      * Genel kullanıma açık bir servis olduğu için servisin kullanımı sırasında herhangi bir güvenlik kontrolü yapılmamaktadır.
      */
-    public function getCities()
+    public function getCities(): object
     {
         return $this->_client->GetCities();
     }
@@ -49,7 +49,7 @@ class City extends Service implements CityInterface
      * Genel kullanıma açık bir servis olduğu için servisin kullanımı sırasında herhangi bir güvenlik kontrolü yapılmamaktadır.
      * Sorgulanan şehir sistemde bulunamazsa ‘şehir bulunamadı’ hatası alınır.
      */
-    public function getCity(int $cityCode)
+    public function getCity(int $cityCode): object
     {
         return $this->_client->GetCity(["cityCode" => $cityCode]);
     }
@@ -62,7 +62,7 @@ class City extends Service implements CityInterface
      * Genel kullanıma açık bir servis olduğu için servisin kullanımı sırasında herhangi bir güvenlik kontrolü yapılmamaktadır.
      * Sorgulanan şehir sistemde bulunamazsa ‘şehir bulunamadı’ hatası alınır.
      */
-    public function getDistricts(int $cityCode)
+    public function getDistricts(int $cityCode): object
     {
         return $this->_client->GetDistrict(["cityCode" => $cityCode]);
     }
@@ -74,7 +74,7 @@ class City extends Service implements CityInterface
      * Genel kullanıma açık bir servis olduğu için servisin kullanımı sırasında herhangi bir güvenlik kontrolü yapılmamaktadır.
      * Sorgulanan ilçe sistemde bulunamazsa ‘ilçe bulunamadı’ hatası alınır.
      */
-    public function getNeighborhoods(int $districtId)
+    public function getNeighborhoods(int $districtId):object
     {
         return $this->_client->GetNeighborhoods(["districtId" => $districtId]);
     }

@@ -10,5 +10,5 @@ interface SapBankStatementEInvoiceInterface
      * @return mixed
      * @description Hesap ekstresi için günlük sorgulama limiti sayısı 3 olarak set edilmiştir.
      */
-    public function getSapBankStatementEInvoice(string $startDate, string $endDate);
+    public function getSapBankStatementEInvoice(string $startDate, string $endDate): object;
 }

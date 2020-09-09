@@ -36,7 +36,7 @@ class SapCommissionEInvoiceDetail extends Service implements SapCommissionEInvoi
      * @return mixed
      * @description Fatura detayı için günlük sorgulama limiti sayısı 3 olarak set edilmiştir.
      */
-    public function getSapCommissionEInvoiceDetail(string $date) {
+    public function getSapCommissionEInvoiceDetail(string $date): object {
         $this->_parameters["date"] = $date;
         return $this->_client->GetSapCommissionEInvoiceDetail($this->_parameters);
     }

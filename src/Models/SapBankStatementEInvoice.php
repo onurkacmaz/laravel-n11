@@ -37,7 +37,7 @@ class SapBankStatementEInvoice extends Service implements SapBankStatementEInvoi
      * @return mixed
      * @description Hesap ekstresi için günlük sorgulama limiti sayısı 3 olarak set edilmiştir.
      */
-    public function getSapBankStatementEInvoice(string $startDate, string $endDate) {
+    public function getSapBankStatementEInvoice(string $startDate, string $endDate): object {
         $this->_parameters["startDate"] = $startDate;
         $this->_parameters["endDate"] = $endDate;
         return $this->_client->GetSapBankStatementEInvoice($this->_parameters);

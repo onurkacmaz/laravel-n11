@@ -4,6 +4,22 @@ namespace Onurkacmaz\LaravelN11\Interfaces;
 
 interface ProductInterface
 {
+    public const ACTIVE = "Active";
+    public const SUSPENDED = "Suspended";
+    public const PROHIBITED = "Prohibited";
+    public const UNLISTED = "Unlisted";
+    public const WAITING_FOR_APPROVAL = "WaitingForApproval";
+    public const REJECTED = "Rejected";
+    public const UNAPPROVED_UPDATE = "UnapprovedUpdate";
+
+    public const DISCOUNT_AMOUNT = 1;
+    public const DISCOUNT_PERCENT = 2;
+    public const DISCOUNTED_PRICE = 3;
+
+    public const TL = 1;
+    public const USD = 2;
+    public const EURO = 3;
+
     /**
      * @param int $productId
      * @return object

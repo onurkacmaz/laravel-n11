@@ -10,5 +10,5 @@ interface ShipmentTemplateInterface
      * @description Teslimat şablon ismi ile aratılan şablonun adres metod gibi özelliklerini gösterme.
      * deliverableCities teslimat yapılacak şehirlerin seçimini yaptığımız alan bu alana değer girilmezse tüm şehirlere gönderim yapılacak anlamındadır.
      */
-    public function getShipmentTemplate(string $templateName);
+    public function getShipmentTemplate(string $templateName): object;
 }
