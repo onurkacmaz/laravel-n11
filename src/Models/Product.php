@@ -73,7 +73,7 @@ class Product extends Service implements ProductInterface
      * @param int $pageSize
      * @return object
      */
-    public function getProductList(int $currentPage = 1, int $pageSize = 100): object
+    public function getProductList(int $currentPage = 1, int $pageSize = self::GENERAL_LIMIT): object
     {
         $this->_parameters["pagingData"] = [
             "currentPage" => $currentPage,
@@ -104,7 +104,7 @@ class Product extends Service implements ProductInterface
      * @return object
      * @description Mağaza ürünlerini aramak için kullanılır.
      */
-    public function searchProducts(int $currentPage = 1, int $pageSize = 100, string $keyword = null, $saleStartDate = null, $saleEndDate = null, $approvalStatus = self::ACTIVE): object
+    public function searchProducts(int $currentPage = 1, int $pageSize = self::GENERAL_LIMIT, string $keyword = null, $saleStartDate = null, $saleEndDate = null, $approvalStatus = self::ACTIVE): object
     {
         $this->_parameters["pagingData"] = [
             "currentPage" => $currentPage,
@@ -268,6 +268,64 @@ class Product extends Service implements ProductInterface
             "stockItem" => $data["stockItems"]
         ];
         return $this->_client->UpdateProductBasic($this->_parameters);
+    }
+
+    /**
+     * @param int $productId
+     * @param string $buyerEmail
+     * @param string $subject
+     * @param $status
+     * @param string $questionDate
+     * @param int $currentPage
+     * @param int $pageSize
+     * @return object
+     * @description Müşterileriniz tarafından mağazanıza sorulan soruları listeler.
+     * Sorularınızı listelemek için Appkey ve Appsecret bilgileriniz gerekmektedir.
+     */
+    public function getProductQuestionList(int $productId, string $buyerEmail, string $subject, $status, string $questionDate, int $currentPage = 1, int $pageSize = self::GENERAL_LIMIT): object {
+        $this->_parameters["currentPage"] = $currentPage;
+        $this->_parameters["pageSize"] = $pageSize;
+        $this->_parameters["productQuestionSearch"] = [
+            "productId" => $productId,
+            "buyerEmail" => $buyerEmail,
+            "subject" => $subject,
+            "status" => $status,
+            "questionDate" => $questionDate,
+        ];
+        return $this->_client->GetProductQuestionList($this->_parameters);
+    }
+
+    /**
+     * @param int $productQuestionId
+     * @return object
+     * @description GetProductQuestionList ile sıralanan soruların içeriğini, buradan gelen ID ve getProductQuestionDetail yardımıyla görüntüleyebilirsiniz.
+     */
+    public function getProductQuestionDetail(int $productQuestionId): object {
+        $this->_parameters["productQuestionId"] = $productQuestionId;
+        return $this->_client->GetProductQuestionDetail($this->_parameters);
+    }
+
+    /**
+     * @param int $productQuestionId
+     * @param string $productAnswer
+     * @return object
+     * @description Müşterilerden gelen ürün sorularını cevaplamak için kullanılır.
+     * Cevap vermek için productQuestionId değeri zorunludur ve GetProductQuestionList‘ten id edinilebilir.
+     */
+    public function saveProductAnswer(int $productQuestionId, string $productAnswer): object {
+        $this->_parameters["productQuestionId"] = $productQuestionId;
+        $this->_parameters["productAnswer"] = $productAnswer;
+        return $this->_client->SaveProductAnswer($this->_parameters);
+    }
+
+    /**
+     * @return object
+     * @description Seller ın sahip olduğu tüm ürünleri, ait olduğu statülere göre sınıflandırıp, statü/sayı bilgisi döner.
+     * Seller a göre cevap döndüğü için istekte sadece authorization olması yeterlidir.
+     * Her bir seller maksimum 3 kez istek gönderebilir.
+     */
+    public function productAllStatusCountsRequest(): object {
+        return $this->_client->ProductAllStatusCountsRequest($this->_parameters);
     }
 
 }

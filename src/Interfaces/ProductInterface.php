@@ -124,4 +124,49 @@ interface ProductInterface
      * ürün stok birimi fiyat bilgilerini veya her ikisinin güncellenmesi için kullanılır.
      */
     public function updateProductPriceBySellerCode(string $productSellerCode, float $price, $currencyType = self::TL, string $sellerStockCode = null, float $optionPrice = null): object;
+
+    /**
+     * @param array $data
+     * @return object
+     * @description Kayıtlı olan bir ürünün, N11 ürün ID’si ya da mağaza kodu ile ürün fiyatını, ürün üzerindeki indirimi ve isteğe bağlı olarak stok ID’si ya da mağaza stok kodu ile belirtilen stoklarının, miktarı ve ilgili stok biriminin liste fiyatının güncellenmesi için kullanılır.
+     */
+    public function updateProductBasic(array $data): object;
+
+    /**
+     * @param int $productId
+     * @param string $buyerEmail
+     * @param string $subject
+     * @param $status
+     * @param string $questionDate
+     * @param int $currentPage
+     * @param int $pageSize
+     * @return object
+     * @description Müşterileriniz tarafından mağazanıza sorulan soruları listeler.
+     * Sorularınızı listelemek için Appkey ve Appsecret bilgileriniz gerekmektedir.
+     */
+    public function getProductQuestionList(int $productId, string $buyerEmail, string $subject, $status, string $questionDate, int $currentPage = 1, int $pageSize = self::GENERAL_LIMIT): object;
+
+    /**
+     * @param int $productQuestionId
+     * @return object
+     * @description GetProductQuestionList ile sıralanan soruların içeriğini, buradan gelen ID ve getProductQuestionDetail yardımıyla görüntüleyebilirsiniz.
+     */
+    public function getProductQuestionDetail(int $productQuestionId): object;
+
+    /**
+     * @param int $productQuestionId
+     * @param string $productAnswer
+     * @return object
+     * @description Müşterilerden gelen ürün sorularını cevaplamak için kullanılır.
+     * Cevap vermek için productQuestionId değeri zorunludur ve GetProductQuestionList‘ten id edinilebilir.
+     */
+    public function saveProductAnswer(int $productQuestionId, string $productAnswer): object;
+
+    /**
+     * @return object
+     * @description Seller ın sahip olduğu tüm ürünleri, ait olduğu statülere göre sınıflandırıp, statü/sayı bilgisi döner.
+     * Seller a göre cevap döndüğü için istekte sadece authorization olması yeterlidir.
+     * Her bir seller maksimum 3 kez istek gönderebilir.
+     */
+    public function productAllStatusCountsRequest(): object;
 }

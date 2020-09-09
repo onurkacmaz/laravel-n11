@@ -8,6 +8,8 @@ use SoapClient;
 class Service
 {
 
+    public const GENERAL_LIMIT = 100;
+
     /**
      * @var array[]|null
      */

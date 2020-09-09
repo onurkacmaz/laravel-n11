@@ -47,7 +47,7 @@ class Category extends Service implements CategoryInterface
      * @return mixed
      * @description İstenilen kategori, üst seviye kategori veya diğer seviye kategorilerden olabilir, bu kategorilere ait olan özelliklerin ve bu özelliklere ait değerlerin listelenmesi için kullanılan metottur.
      */
-    public function getCategoryAttributes(int $categoryId, int $currentPage = 1, int $pageSize = 100): object
+    public function getCategoryAttributes(int $categoryId, int $currentPage = 1, int $pageSize = self::GENERAL_LIMIT): object
     {
         $this->_parameters["categoryId"] = $categoryId;
         $this->_parameters["pagingData"] = [
@@ -75,7 +75,7 @@ class Category extends Service implements CategoryInterface
      * @return mixed
      * @description Özelliğe ait değerleri listeler
      */
-    public function getCategoryAttributeValue(int $categoryProductAttrId, int $currentPage = 1, int $pageSize = 100): object
+    public function getCategoryAttributeValue(int $categoryProductAttrId, int $currentPage = 1, int $pageSize = self::GENERAL_LIMIT): object
     {
         $this->_parameters["categoryProductAttributeId"] = $categoryProductAttrId;
         $this->_parameters["pagingData"] = [
