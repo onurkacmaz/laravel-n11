@@ -1,13 +1,8 @@
 <?php
 
-namespace Onurkacmaz\LaravelN11\Models;
+namespace Onurkacmaz\LaravelN11\Interfaces;
 
-use Onurkacmaz\LaravelN11\Exceptions\N11Exception;
-use Onurkacmaz\LaravelN11\Interfaces\OrderInterface;
-use Onurkacmaz\LaravelN11\Service;
-use SoapClient;
-
-class Order extends Service implements OrderInterface
+interface OrderInterface
 {
 
     /**
@@ -20,47 +15,19 @@ class Order extends Service implements OrderInterface
      */
     public const OTHER = "OTHER";
 
-
-    /**
-     * @var SoapClient|null
-     */
-    private $_client;
-
-    /**
-     * @var string
-     */
-    private $endPoint = "/OrderService.wsdl";
-
-    /**
-     * Category constructor
-     * endPoint set edildi.
-     * @throws N11Exception|\SoapFault
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->_client = $this->setEndPoint($this->endPoint);
-    }
-
     /**
      * @param array $searchData
      * @return object
      * @description Verilen arama kriterlerine göre sipariş bilgisi ile beraber sipariş maddelerini de listelemek için kullanılır.
      */
-    public function getOrderDetail(array $searchData = []): object {
-        $this->_parameters["searchData"] = $searchData;
-        return $this->_client->DetailedOrderList($this->_parameters);
-    }
+    public function getOrderDetail(array $searchData = []): object;
 
     /**
      * @param array $searchData
      * @return object
      * @description Bu metot sipariş ile ilgili özet bilgileri listelemek için kullanılır.
      */
-    public function getOrders(array $searchData = []): object {
-        $this->_parameters["searchData"] = $searchData;
-        return $this->_client->OrderList($this->_parameters);
-    }
+    public function getOrders(array $searchData = []): object;
 
     /**
      * @param int $orderId
@@ -68,12 +35,7 @@ class Order extends Service implements OrderInterface
      * @description Sipariş N11 ID bilgisi kullanarak sipariş detaylarını almak için kullanılır, sipariş N11 ID bilgisine OrderService OrderList veya DetailedOrderList metotlarıyla ulaşılabilir.
      * n11 platform üzerinden kargo ücretinin ödenmesi ve bunun tahsilat bilgileri “serviceItemList” alanından ulaşılabilir.
      */
-    public function orderDetail(int $orderId): object {
-        $this->_parameters["orderRequest"] = [
-            "id" => $orderId
-        ];
-        $this->_client->OrderDetail($this->_parameters);
-    }
+    public function orderDetail(int $orderId): object;
 
     /**
      * @param int $orderId
@@ -88,13 +50,7 @@ class Order extends Service implements OrderInterface
      * Kabul edilen sipariş daha sonra mağaza tarafından reddedilemez.
      * Sipariş n11 ID sine OrderService içinden OrderDetail veya DetailedOrderList metodu kullanılarak erişilir.
      */
-    public function orderItemAccept(int $orderId, int $numberOfPackages): object {
-        $this->_parameters["orderItem"] = [
-            "id" => $orderId
-        ];
-        $this->_parameters["numberOfPackages"] = $numberOfPackages;
-        $this->_client->OrderItemAccept($this->_parameters);
-    }
+    public function orderItemAccept(int $orderId, int $numberOfPackages): object;
 
     /**
      * @param int $orderId
@@ -105,16 +61,7 @@ class Order extends Service implements OrderInterface
      * Reddedilen sipariş daha sonra mağaza tarafından kabul edilemez.
      * Sipariş n11 ID sine OrderService içinden OrderDetail veya DetailedOrderList metodu kullanılarak erişilir.
      */
-    public function orderItemReject(int $orderId, string $rejectReason, string $rejectReasonType = self::OUT_OF_STOCK): object {
-        $this->_parameters["orderItemList"] = [
-            "orderItem" => [
-                "id" => $orderId
-            ]
-        ];
-        $this->_parameters["rejectReason"] = $rejectReason;
-        $this->_parameters["rejectReasonType"] = $rejectReasonType;
-        $this->_client->OrderItemReject($this->_parameters);
-    }
+    public function orderItemReject(int $orderId, string $rejectReason, string $rejectReasonType = self::OUT_OF_STOCK): object;
 
     /**
      * @param int $orderId
@@ -125,13 +72,5 @@ class Order extends Service implements OrderInterface
      * Aksi durumda “ön koşullar sağlanamadı” cevabı alınır.
      * Kargo şirketlerinin listesi için ShipmentCompanyService den GetShipmentCompanies metodu kullanılmalıdır.
      */
-    public function makeOrderItemShipment(int $orderId): object {
-        $this->_parameters["orderItemList"] = [
-            "orderItem" => [
-                "id" => $orderId
-            ]
-        ];
-        $this->_client->MakeOrderItemShipment($this->_parameters);
-    }
-
+    public function makeOrderItemShipment(int $orderId): object;
 }
