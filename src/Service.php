@@ -8,6 +8,9 @@ use SoapClient;
 class Service
 {
 
+    /**
+     * @var int
+     */
     public const GENERAL_LIMIT = 100;
 
     /**
