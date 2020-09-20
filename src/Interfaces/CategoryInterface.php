@@ -4,6 +4,12 @@ namespace Onurkacmaz\LaravelN11\Interfaces;
 
 interface CategoryInterface
 {
+
+    /**
+     * @var string
+     */
+    public const END_POINT = "CategoryService.wsdl";
+
     /**
      * @return mixed
      * @description Üst Seviye Kategorileri Listeler

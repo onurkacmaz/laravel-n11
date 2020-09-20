@@ -4,6 +4,12 @@ namespace Onurkacmaz\LaravelN11\Interfaces;
 
 interface ProductStockInterface
 {
+
+    /**
+     * @var string
+     */
+    public const END_POINT = "ProductStockService.wsdl";
+
     /**
      * @param int $productId
      * @return mixed

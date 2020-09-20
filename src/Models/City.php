@@ -16,18 +16,13 @@ class City extends Service implements CityInterface
     private $_client;
 
     /**
-     * @var string
-     */
-    private $endPoint = "/CityService.wsdl";
-
-    /**
      * City constructor
      * @throws N11Exception|\SoapFault
      */
     public function __construct()
     {
         parent::__construct();
-        $this->_client = $this->setEndPoint($this->endPoint);
+        $this->_client = $this->setEndPoint(self::END_POINT);
     }
 
     /**

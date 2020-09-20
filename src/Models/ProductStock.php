@@ -16,11 +16,6 @@ class ProductStock extends Service implements ProductStockInterface
     private $_client;
 
     /**
-     * @var string
-     */
-    private $endPoint = "/ProductStockService.wsdl";
-
-    /**
      * Category constructor
      * endPoint set edildi.
      * @throws N11Exception|\SoapFault
@@ -28,7 +23,7 @@ class ProductStock extends Service implements ProductStockInterface
     public function __construct()
     {
         parent::__construct();
-        $this->_client = $this->setEndPoint($this->endPoint);
+        $this->_client = $this->setEndPoint(self::END_POINT);
     }
 
     /**

@@ -15,18 +15,13 @@ class Product extends Service implements ProductInterface
     private $_client;
 
     /**
-     * @var string
-     */
-    private $endPoint = "/ProductService.wsdl";
-
-    /**
      * City constructor
      * @throws N11Exception|\SoapFault
      */
     public function __construct()
     {
         parent::__construct();
-        $this->_client = $this->setEndPoint($this->endPoint);
+        $this->_client = $this->setEndPoint(self::END_POINT);
     }
 
     /**

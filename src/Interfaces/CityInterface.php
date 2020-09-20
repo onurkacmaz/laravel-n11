@@ -4,6 +4,12 @@ namespace Onurkacmaz\LaravelN11\Interfaces;
 
 interface CityInterface
 {
+
+    /**
+     * @var string
+     */
+    public const END_POINT = "CityService.wsdl";
+
     /**
      * @return mixed
      * @description Sistemde kayıtlı şehirlerin kodları ve plaka numaraları ile birlikte listelenmesi için bu metot kullanılır.

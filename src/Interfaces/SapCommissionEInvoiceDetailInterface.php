@@ -4,6 +4,12 @@ namespace Onurkacmaz\LaravelN11\Interfaces;
 
 interface SapCommissionEInvoiceDetailInterface
 {
+
+    /**
+     * @var string
+     */
+    public const END_POINT = "SapCommissionEInvoiceDetailService.wsdl";
+
     /**
      * @param string $date
      * @return mixed

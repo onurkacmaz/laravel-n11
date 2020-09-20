@@ -4,6 +4,12 @@ namespace Onurkacmaz\LaravelN11\Interfaces;
 
 interface SapBankStatementEInvoiceInterface
 {
+
+    /**
+     * @var string
+     */
+    public const END_POINT = "SapBankStatementEInvoiceService.wsdl";
+
     /**
      * @param string $startDate
      * @param string $endDate

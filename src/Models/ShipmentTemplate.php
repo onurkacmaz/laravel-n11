@@ -17,18 +17,13 @@ class ShipmentTemplate extends Service implements ShipmentTemplateInterface
     private $_client;
 
     /**
-     * @var string
-     */
-    private $endPoint = "/ShipmentService.wsdl";
-
-    /**
      * Shipment Service constructor
      * @throws N11Exception|\SoapFault
      */
     public function __construct()
     {
         parent::__construct();
-        $this->_client = $this->setEndPoint($this->endPoint);
+        $this->_client = $this->setEndPoint(self::END_POINT);
     }
 
     /**

@@ -8,6 +8,11 @@ interface OrderInterface
     /**
      * @var string
      */
+    public const END_POINT = "OrderService.wsdl";
+
+    /**
+     * @var string
+     */
     public const OUT_OF_STOCK = "OUT_OF_STOCK";
 
     /**

@@ -4,6 +4,12 @@ namespace Onurkacmaz\LaravelN11\Interfaces;
 
 interface ProductSellingInterface
 {
+
+    /**
+     * @var string
+     */
+    public const END_POINT = "ProductSellingService.wsdl";
+
     /**
      * @param int $productId
      * @return mixed

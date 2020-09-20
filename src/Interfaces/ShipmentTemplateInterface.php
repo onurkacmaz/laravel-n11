@@ -4,6 +4,12 @@ namespace Onurkacmaz\LaravelN11\Interfaces;
 
 interface ShipmentTemplateInterface
 {
+
+    /**
+     * @var string
+     */
+    public const END_POINT = "ShipmentService.wsdl";
+
     /**
      * @param string $templateName
      * @return mixed

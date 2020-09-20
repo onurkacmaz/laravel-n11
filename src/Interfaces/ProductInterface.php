@@ -7,6 +7,10 @@ interface ProductInterface
     /**
      * @var string
      */
+    public const END_POINT = "ProductService.wsdl";
+    /**
+     * @var string
+     */
     public const ACTIVE = "Active";
     /**
      * @var string

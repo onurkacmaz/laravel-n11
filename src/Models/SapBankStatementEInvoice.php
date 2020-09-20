@@ -17,18 +17,13 @@ class SapBankStatementEInvoice extends Service implements SapBankStatementEInvoi
     private $_client;
 
     /**
-     * @var string
-     */
-    private $endPoint = "/SapBankStatementEInvoiceService.wsdl";
-
-    /**
      * Sap Bank Statement E-Invoice Service constructor
      * @throws N11Exception|\SoapFault
      */
     public function __construct()
     {
         parent::__construct();
-        $this->_client = $this->setEndPoint($this->endPoint);
+        $this->_client = $this->setEndPoint(self::END_POINT);
     }
 
     /**

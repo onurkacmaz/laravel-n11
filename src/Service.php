@@ -44,7 +44,7 @@ class Service
      */
     protected function setEndPoint(string $endPoint): SoapClient
     {
-        return new SoapClient($this->_baseUrl . $endPoint);
+        return new SoapClient($this->_baseUrl . "/" . $endPoint);
     }
 
 }

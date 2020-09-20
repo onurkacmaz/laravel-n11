@@ -4,6 +4,12 @@ namespace Onurkacmaz\LaravelN11\Interfaces;
 
 interface ShipmentCompanyInterface
 {
+
+    /**
+     * @var string
+     */
+    public const END_POINT = "ShipmentCompanyService.wsdl";
+
     /**
      * @return mixed
      * @description Sistemde tanımlı olan tüm kargo şirketlerini listeler.
