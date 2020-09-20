@@ -11,17 +11,6 @@ class Order extends Service implements OrderInterface
 {
 
     /**
-     * @var string
-     */
-    public const OUT_OF_STOCK = "OUT_OF_STOCK";
-
-    /**
-     * @var string
-     */
-    public const OTHER = "OTHER";
-
-
-    /**
      * @var SoapClient|null
      */
     private $_client;
