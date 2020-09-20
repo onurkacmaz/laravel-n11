@@ -12,6 +12,10 @@ You can install the package via composer:
 composer require onurkacmaz/laravel-n11
 ```
 
+```bash
+php artisan vendor:publish --tag=config
+```
+
 ## Usage
 
 ``` php
